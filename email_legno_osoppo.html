@@ -1,0 +1,43 @@
+
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Genera Email Outlook</title>
+  <script>
+    function generaEmail() {
+      const oggi = new Date();
+      const giorno = String(oggi.getDate()).padStart(2, '0');
+      const mese = String(oggi.getMonth() + 1).padStart(2, '0');
+      const anno = oggi.getFullYear();
+      const data = `${giorno}/${mese}/${anno}`;
+
+      const destinatario = "m.dagostina@inter-railspa.it";
+      const oggetto = encodeURIComponent("documenti legno Osoppo");
+      const corpo = encodeURIComponent(
+        "Documenti commerciali del legname depositati nella cassetta in stazione a Osoppo. Data: " + data
+      );
+
+      const mailtoLink = `mailto:${destinatario}?subject=${oggetto}&body=${corpo}`;
+      window.location.href = mailtoLink;
+    }
+  </script>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    button {
+      font-size: 18px;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Invio email documenti legno Osoppo</h1>
+  <p>Clicca il pulsante qui sotto per aprire Outlook con l'email già compilata e la data odierna.</p>
+  <button onclick="generaEmail()">Apri Outlook</button>
+</body>
+</html>
